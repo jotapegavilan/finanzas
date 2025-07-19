@@ -1,5 +1,6 @@
 {
   "name": "Panel de Finanzas Personales",
   "description": "Una aplicación intuitiva para el seguimiento de gastos y la elaboración de presupuestos, con categorías de gastos, gráficos interactivos, objetivos financieros y un panel de control claro que muestra los datos clave de un vistazo.",
-  "requestFramePermissions": []
+  "requestFramePermissions": [],
+  "prompt": ""
 }

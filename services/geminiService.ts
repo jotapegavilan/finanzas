@@ -12,6 +12,8 @@ interface FinancialSummary {
   totalSavings: number;
   savingsTarget: number;
   currency: string;
+  month: string;
+  year: number;
   expensesByCategory: {
     category: string;
     spent: number;
@@ -26,7 +28,7 @@ export const generateFinancialTip = async (summary: FinancialSummary): Promise<s
     Habla directamente al usuario en un tono positivo y constructivo.
     La moneda actual es ${summary.currency}.
 
-    Aquí está el resumen financiero del usuario para este mes:
+    Aquí está el resumen financiero del usuario para ${summary.month} de ${summary.year}:
     - Ingresos Totales: ${summary.currency}${summary.totalIncome.toFixed(2)}
     - Gastos Totales: ${summary.currency}${summary.totalExpenses.toFixed(2)}
     - Ahorro Total: ${summary.currency}${summary.totalSavings.toFixed(2)}
@@ -35,10 +37,10 @@ export const generateFinancialTip = async (summary: FinancialSummary): Promise<s
     - Desglose de gastos por categoría:
     ${summary.expensesByCategory.map(e => `  - ${e.category}: Gastado ${summary.currency}${e.spent.toFixed(2)}`).join('\n')}
 
-    Basándote en estos datos, proporciona un consejo financiero conciso y útil.
+    Basándote en estos datos, proporciona un consejo financiero conciso y útil para este período.
     1. Analiza si el usuario está cumpliendo su objetivo de ahorro del 10%. Felicítale si lo cumple o anímale si está cerca.
-    2. Comenta brevemente sobre la relación entre ingresos y gastos.
-    3. Si un gasto de una categoría parece alto, menciónalo sutilmente.
+    2. Comenta brevemente sobre la relación entre ingresos y gastos del mes.
+    3. Si un gasto de una categoría parece alto en este período, menciónalo sutilmente.
     Prioriza el consejo sobre el ahorro.
   `;
 

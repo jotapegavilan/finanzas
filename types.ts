@@ -8,12 +8,29 @@ export enum Category {
   Otros = "Otros",
 }
 
+export enum AccountType {
+  Credito = "Crédito",
+  Debito = "Débito",
+  Prepago = "Prepago",
+  CuentaBancaria = "Cuenta Bancaria",
+}
+
+export interface FinancialAccount {
+  id: string;
+  userId: number;
+  name: string;
+  type: AccountType;
+  billingDay?: number; // Día del mes para la facturación (1-31)
+  paymentDay?: number; // Día del mes para el vencimiento del pago (1-31)
+}
+
 export interface Expense {
   id: string;
   amount: number;
   category: Category;
   description: string;
   date: string;
+  accountId?: string;
 }
 
 export interface Income {
@@ -21,6 +38,7 @@ export interface Income {
   amount: number;
   description: string;
   date: string;
+  accountId?: string;
 }
 
 export interface Saving {
@@ -29,6 +47,7 @@ export interface Saving {
     description: string;
     date: string;
     goalId?: string;
+    accountId?: string;
 }
 
 export interface Goal {
